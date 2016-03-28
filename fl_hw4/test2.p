@@ -1,0 +1,1 @@
+while 1 == 1 do read x; write x + 1; skip

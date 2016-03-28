@@ -1,0 +1,33 @@
+import java_cup.runtime.*;
+
+terminal PLUS;
+terminal MINUS;
+terminal TIMES;
+terminal DIVIDE;
+terminal MODULO;
+terminal EQ;
+terminal NOT_EQ;
+terminal GTR;
+terminal GTR_EQ;
+terminal LESS;
+terminal LESS_EQ;
+terminal AND;
+terminal OR;
+
+terminal ASSIGN;
+terminal SEMICOLON;
+
+terminal IDENT;
+terminal INT;
+
+terminal SKIP;
+terminal WRITE;
+terminal READ;
+terminal WHILE;
+terminal DO;
+terminal IF;
+terminal THEN;
+terminal ELSE;
+
+non terminal dummy;
+dummy ::= ;
