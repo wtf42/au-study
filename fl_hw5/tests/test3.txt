@@ -1,0 +1,1 @@
+read x; while x != 42 do read x; write 42
