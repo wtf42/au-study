@@ -1,0 +1,1 @@
+skip; if x + 42 < x then read x else write x

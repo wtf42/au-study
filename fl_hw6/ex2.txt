@@ -1,0 +1,5 @@
+s:=0;
+while s != 42 do
+  read x;
+  s := s + x;
+  write s
