@@ -1,0 +1,1 @@
+while ♠ == 9 do read x; write x + 1; skip;

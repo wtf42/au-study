@@ -43,6 +43,17 @@ Symbol newNum(int tokenId, String value) {
     return newSym(tokenId, "Num", value);
 }
 
+static class LlangException extends RuntimeException {
+    String text;
+    int line;
+    int col;
+    public LlangException(String text, int line, int col) {
+        this.text = text;
+        this.line = line;
+        this.col = col;
+    }
+}
+
 %}
 
 ident           = [A-Za-z_]([A-Za-z0-9_])*
@@ -96,4 +107,4 @@ S               ::= "skip" |
     P           ::= S { }
     {whitespace} { }
 }
-.               { throw new RuntimeException("Fail: '" + yytext() + "' line: " + yyline + ", column: " + yychar); }
+.               { throw new LlangException(yytext(), yyline, yycolumn); }

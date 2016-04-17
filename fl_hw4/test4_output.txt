@@ -1,0 +1,2 @@
+KW_while(0, 4)
+Fail: '♠' line: 0, column: 6
