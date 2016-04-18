@@ -1,6 +1,6 @@
 module Main where
 
-import Reader (read_st, print_st)
+import Reader (read_st, print_st, pretty_st)
 
 main :: IO ()
 main = do

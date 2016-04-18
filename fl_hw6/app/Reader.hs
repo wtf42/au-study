@@ -5,9 +5,12 @@ import Text.Parsec.String (Parser)
 import Text.Parsec.Language (emptyDef)
 import qualified Text.Parsec.Token as Tok
 
+import Data.Tree
+import Data.Tree.Pretty
+import Control.Monad.Trans
+
 import Syntax
 
-import Control.Monad.Trans
 
 lexer :: Tok.TokenParser ()
 lexer = Tok.makeTokenParser style
@@ -121,3 +124,23 @@ print_op GreaterEQ = ">="
 print_op Greater = ">"
 print_op AND = "&&"
 print_op OR = "||"
+
+tree_st :: St -> Tree String
+tree_st Skip = Node "skip" []
+tree_st (Assign s e) = Node "assign" [Node s [], (tree_expr e)]
+tree_st (Write e) = Node "write" [(tree_expr e)]
+tree_st (Read e) = Node "read" [(tree_expr e)]
+tree_st (While e s) = Node "while" [Node "condition" [(tree_expr e)]
+                                  , Node "do" [(tree_st s)]]
+tree_st (IfS e st sf) = Node "if" [Node "condition" [(tree_expr e)]
+                                 , Node "then" [(tree_st st)]
+                                 , Node "else" [(tree_st sf)]]
+tree_st (Multi sl sr) = Node "multi" [(tree_st sl), (tree_st sr)]
+
+tree_expr :: Expr -> Tree String
+tree_expr (IntVal i) = Node (show i) []
+tree_expr (Var v) = Node v []
+tree_expr (BinOp o el er) = Node (print_op o) [(tree_expr el), (tree_expr er)]
+
+pretty_st :: St -> String
+pretty_st = drawVerticalTree . tree_st
