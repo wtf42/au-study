@@ -12,7 +12,8 @@ import Syntax
 binary s f assoc = Ex.Infix (reservedOp s >> return (BinOp f)) assoc
 
 table = [[binary "*"  Times  Ex.AssocLeft,
-          binary "/"  Divide Ex.AssocLeft]
+          binary "/"  Divide Ex.AssocLeft,
+          binary "%"  Mod    Ex.AssocLeft]
         ,[binary "+"  Plus   Ex.AssocLeft,
           binary "-"  Minus  Ex.AssocLeft]
         ,[binary "==" EQ1    Ex.AssocLeft,
@@ -20,8 +21,8 @@ table = [[binary "*"  Times  Ex.AssocLeft,
           binary "<"  Less   Ex.AssocLeft,
           binary "<=" LessEQ Ex.AssocLeft,
           binary ">=" GreaterEQ Ex.AssocLeft,
-          binary ">"  Greater Ex.AssocLeft,
-          binary "&&" AND    Ex.AssocLeft,
+          binary ">"  Greater Ex.AssocLeft]
+        ,[binary "&&" AND    Ex.AssocLeft,
           binary "||" OR     Ex.AssocLeft]]
 
 int :: Parser Expr

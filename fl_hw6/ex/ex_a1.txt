@@ -1,0 +1,1 @@
+x:=0; skip; while x+1!=42 && x==x do read x; if 123*456<12345 then x:=x+42 else skip; write x

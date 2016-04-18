@@ -1,0 +1,1 @@
+Multi Skip (Multi (Read (Var "x")) (Multi (IfS (BinOp EQ1 (BinOp Plus (Var "y") (IntVal 1)) (Var "x")) (Write (Var "y")) Skip) (Multi Skip Skip)))
